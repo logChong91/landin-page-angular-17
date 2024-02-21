@@ -1,0 +1,37 @@
+<div class="container">
+    <form [formGroup]="contactForm" class="row g-3 needs-validation" novalidate (submit)="enviar($event)">
+        <div class="col-md-4">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{'is-invalid' : hasErrors('name', 'required') || hasErrors('name', 'minlength')}">
+          @if (hasErrors('name', 'required')) {
+              <span class="text-danger">Please provide a valid name</span>
+          } 
+          @if (hasErrors('name', 'minlength')) {
+              <span class="text-danger">Put at least 3 craters</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email" [ngClass]="{'is-invalid' : hasErrors('email', 'required') || hasErrors('email', 'email')}">
+          @if (hasErrors('email', 'required')) {
+              <span class="text-danger">Please provide a valid email</span>
+            } 
+        @if (hasErrors('email', 'email')) {
+            <span class="text-danger">Invalid email format</span>
+            }
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom03" class="form-label">City</label>
+          <input type="text" class="form-control" id="validationCustom03" formControlName="city" [ngClass]="{'is-invalid' : hasErrors('city', 'required')}">
+          @if (hasErrors('city', 'required')) {
+              <span class="text-danger">Please provide a valid city.</span>
+          } 
+          @if (hasErrors('city', 'minlength')) {
+              <span class="text-danger">Put at least 3 craters</span>  
+          }
+        </div>    
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+</div>
